@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-setwd("/Users/bjarnold/DivInformatics/Workshops/Summer2020_shortRtutorials")
+setwd("./")
 ```
 
 The previous workshop gave a basic introduction to data structures in R. Today we will talk about the 'tidyverse' package, which is a collection of packages that contain many useful functions with intuitive names and ease of use. When cleaning and processing data sets using these functions, it almost looks like you're just writing out, in English, what you're doing to the data, so the code is highly readable.
@@ -65,18 +65,18 @@ Let's say right after we convert these data to long format, we want to polish it
 ```{r, include=FALSE}
 # do each operation on a separate line
 mask_use_long <- pivot_longer(data = mask_use, cols = -COUNTYFP, names_to = "MaskUseResponse", values_to = "MaskUseProportion")
-mask_use_long <- rename(mask_use_long, COUNTYFP = "fips")
+mask_use_long <- rename(mask_use_long, "fips" = COUNTYFP)
 mask_use_long <- arrange(mask_use_long, "fips")
 
 # most dense: do all operations on a single line
-mask_use_long <- pivot_longer(data = arrange(rename(mask_use, COUNTYFP = "fips"), "fips"), cols = -"fips", names_to = "MaskUseResponse", values_to = "MaskUseProportion")
+mask_use_long <- pivot_longer(data = arrange(rename(mask_use, "fips" = COUNTYFP), "fips"), cols = -"fips", names_to = "MaskUseResponse", values_to = "MaskUseProportion")
 ```
 
 When we want to do multiple operations in a row, it is generally considered better to string together multiple commands using the pipe operator in tidyverse, which is specified by %>%. This piping together of commands allows us to do many complicated things while keeping our code very easy to read.
 ```{r, include=FALSE}
 mask_use_long <- mask_use %>%
   pivot_longer(cols = -COUNTYFP, names_to = "MaskUseResponse", values_to = "MaskUseProportion") %>%
-  rename(COUNTYFP = "fips") %>%
+  rename("fips" = COUNTYFP) %>%
   arrange(fips)
 ```
 
