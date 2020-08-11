@@ -82,11 +82,6 @@ cases_masks <- cases_masks %>% dplyr::select(-date, -fips)
 
 # simple commands to get an idea of what the data look like!
 
-# Which counties have the most cases?
-cases_latest %>%
-  arrange(desc(cases), county) %>%
-  head(n=20)
-
 # Which counties use masks most frequently?
 cases_masks %>% filter(MaskUseResponse == "ALWAYS") %>%
   arrange(desc(MaskUseProportion), county) %>%
