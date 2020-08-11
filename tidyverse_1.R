@@ -36,8 +36,8 @@ mask_use_long <- pivot_longer(data = mask_use,
 # stringing functions together: pivot_longer() to convert to long format -> rename() to change column name -> arrange() to sort based on column
 # option 1: do each operation on a separate line
 mask_use_long <- pivot_longer(data = mask_use, cols = -COUNTYFP, names_to = "MaskUseResponse", values_to = "MaskUseProportion")
-mask_use_long <- rename(mask_use_long, "fips" = COUNTYFP)
-mask_use_long <- arrange(mask_use_long, "fips")
+mask_use_long2 <- rename(mask_use_long, "fips" = COUNTYFP)
+mask_use_long3 <- arrange(mask_use_long2, "fips")
 
 # option 2: do all operations on a single line (not preferred method)
 mask_use_long <- pivot_longer(data = arrange(rename(mask_use, "fips" = COUNTYFP), "fips"), cols = -"fips", names_to = "MaskUseResponse", values_to = "MaskUseProportion")
@@ -110,3 +110,4 @@ cases_masks %>% filter(MaskUseResponse == "ALWAYS") %>%
 # - arrange() to sort the tibble according to values in particular columns
 # - filter() to select particular rows that meet specific conditions
 # - mutate(), with if_else() to modify particular cells in a table!
+# - select() to select specific columns to keep

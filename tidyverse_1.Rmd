@@ -15,7 +15,7 @@ The previous workshop gave a basic introduction to data structures in R. Today w
 
 Tidyverse has many functions, especially when you see them all in a [cheat sheet](https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf). Don't worry about necessarily memorizing them all. We'll go through several of the more important ones, and as you analyze data yourselves, you can quickly find what functions may be useful based on how they're categorized here. Alternatively, google searches that include 'tidyverse' in the search may also be fast and informative. 
 
-The Tidyverse package is already loaded in this environment we're working in, but when you use R studio on your own computers, you'll need to install these libraries (if they aren't already installed), and then load them using the install.packages() and library() functions, respectivey:
+The Tidyverse package is already installed in this environment we're working in, but when you use R studio on your own computers, you'll need to install these libraries (if they aren't already installed), and then load them using the install.packages() and library() functions, respectivey:
 ```{r}
 #install.packages("tidyverse")
 library(tidyverse)
@@ -176,6 +176,7 @@ Key tidyverse functions used today:
 - arrange() to sort the tibble according to values in particular columns
 - filter() to select particular rows that meet specific conditions
 - mutate(), with if_else() to modify particular cells in a table!
+ - select() to select specific columns to keep
 
 This is just taking quick peeks at these data. In the next session, we'll review and learn some more tidyverse tools to manipulate data, but we'll also learn some easy-to-use functions that allow us to analyze these data in more complex ways, using relatively little code!
 
